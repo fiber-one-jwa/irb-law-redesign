@@ -142,3 +142,97 @@
 .animate-fade-up {
   animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
+
+
+/* ============ Signature pass: document & ink details ============ */
+
+/* Utility face for captions, references, data */
+.font-mono-caps {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* The fee-quote document: legal paper, ruled lines, punched edge */
+.doc-paper {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(27,42,74,0.025) 1px, transparent 1px) 0 0 / 100% 28px,
+    linear-gradient(160deg, #fdfbf5 0%, #f7f2e7 55%, #efe7d5 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.8) inset,
+    0 24px 60px -18px rgba(13,21,40,0.45),
+    0 4px 14px -6px rgba(13,21,40,0.3);
+}
+.doc-paper::before {
+  /* red margin rule, like a legal pad */
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 34px;
+  width: 1px;
+  background: rgba(190, 60, 50, 0.22);
+}
+.doc-fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 34px 34px 0;
+  border-color: transparent rgba(13,21,40,0.14) transparent transparent;
+  filter: drop-shadow(-2px 2px 2px rgba(13,21,40,0.08));
+}
+
+/* Animated heading flourish: draws itself in when scrolled to */
+.heading-flourish::after {
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+.heading-flourish.flourish-in::after {
+  transform: scaleX(1);
+}
+
+/* Signature script on the document */
+.doc-signature {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  transform: rotate(-4deg);
+}
+
+/* Action search dropdown */
+@keyframes drop-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.99); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.animate-drop-in {
+  animation: drop-in 0.18s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* kbd hint */
+.kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  padding: 0 0.3rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(27,42,74,0.15);
+  border-bottom-width: 2px;
+  background: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #5F7CA8;
+}
+
+/* Respect reduced motion for CSS-side flourishes */
+@media (prefers-reduced-motion: reduce) {
+  .heading-flourish::after { transform: scaleX(1); transition: none; }
+  .animate-drop-in, .animate-fade-up { animation: none; }
+}
