@@ -1,0 +1,31 @@
+
+export interface FeeRow { service: string; price: string; note?: string }
+
+export const FIXED_FEES: FeeRow[] = [
+  { service: 'Simple Will (individual)', price: 'from S$—', note: 'Fixed fee, one round of amendments included' },
+  { service: 'Lasting Power of Attorney (Form 1)', price: 'from S$—', note: 'Includes OPG certification' },
+  { service: 'Deed Poll (name change)', price: 'from S$—', note: 'Same-day preparation available' },
+  { service: 'Notarisation & Legalisation', price: 'from S$—', note: 'Per document; SAL authentication extra' },
+  { service: 'Uncontested Divorce (simplified)', price: 'from S$—', note: 'Fixed fee, all court filings included' },
+  { service: 'Syariah Divorce (amicable)', price: 'from S$—', note: 'Staged fixed fees per phase' },
+  { service: 'HDB Conveyancing (sale or purchase)', price: 'from S$—', note: 'Fixed fee plus disbursements' },
+  { service: 'Grant of Probate / Letters of Administration', price: 'from S$—', note: 'Uncontested estates' },
+]
+
+export const TESTIMONIALS = [
+  {
+    quote: 'Kulvinder fought for my children and my future as if they were her own. Every fee was explained before we started, and there were no surprises at the end.',
+    name: 'Madam R., family law client',
+    matter: 'Divorce & custody · acted by Kulvinder Kaur',
+  },
+  {
+    quote: 'Ustaz Dzul and his team explained every step of the Syariah process in Malay, with patience and respect. My mother’s faraid matter was settled without any family quarrel.',
+    name: 'Encik H., Syariah client',
+    matter: 'Faraid & inheritance · acted by Mohd Dzuleqhmal',
+  },
+  {
+    quote: 'Daniel’s team completed our HDB sale two weeks ahead of schedule and answered every anxious call. Buying and selling at once felt effortless.',
+    name: 'Mr & Mrs T., conveyancing clients',
+    matter: 'HDB sale & purchase · acted by Daniel Tan',
+  },
+]
