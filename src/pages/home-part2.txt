@@ -1,0 +1,118 @@
+
+      {/* ============ PRACTICE AREAS ============ */}
+      <section className="container-x py-20">
+        <SectionHeading
+          eyebrow="What we do"
+          title="Eight practices. One promise: you’ll always know where you stand."
+          sub="Every engagement starts with a free consultation and ends with a clear result. Pick your situation — we’ll take it from there."
+        />
+        <div ref={gridRef} className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {PRACTICE_AREAS.map(a => {
+            const Icon = ICONS[a.icon]
+            const to = AREA_ROUTES[a.slug] ?? '/contact'
+            return (
+              <Link data-reveal key={a.slug} to={to} className="card-soft group p-6 transition hover:-translate-y-1.5 hover:shadow-[0_16px_44px_-12px_rgba(27,42,74,0.25)]">
+                <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-navy-700 text-gold-400 transition group-hover:bg-gold-500 group-hover:text-navy-900">
+                  <Icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-4 font-serif text-lg font-bold text-navy-700">{a.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy-500">{a.blurb}</p>
+                <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-teal-600 transition group-hover:gap-2">
+                  Learn more <ChevronRight className="h-3.5 w-3.5" />
+                </span>
+              </Link>
+            )
+          })}
+        </div>
+      </section>
+
+      {/* ============ HOW IT WORKS ============ */}
+      <section className="bg-navy-800 py-20 text-white">
+        <div className="container-x">
+          <SectionHeading
+            light
+            eyebrow="How it works"
+            title="Three steps. Zero surprises."
+            sub="Legal help shouldn’t feel like a gamble. Here is exactly what happens when you reach out."
+          />
+          <div ref={stepsRef} className="mt-12 grid gap-6 md:grid-cols-3">
+            {[
+              { n: 'Step one', t: 'Free consultation', d: 'Tell us your situation — in person, by phone or WhatsApp. We listen first, then tell you honestly whether you need a lawyer at all.' },
+              { n: 'Step two', t: 'Fixed written fee quote', d: 'Before any work begins, you receive a fixed fee in writing. What we quote is what you pay. No hourly meters running in the background.' },
+              { n: 'Step three', t: 'Your dedicated lawyer', d: 'One named lawyer handles your matter from start to finish — someone who knows your name, your file and your goals.' },
+            ].map(s => (
+              <div data-reveal key={s.n} className="relative rounded-3xl bg-white/5 p-7 ring-1 ring-white/10 backdrop-blur transition hover:bg-white/10">
+                <span className="font-mono-caps text-[11px] text-gold-400">{s.n}</span>
+                <h3 className="mt-3 font-serif text-xl font-bold">{s.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-navy-200">{s.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FEATURED LAWYERS ============ */}
+      <section className="container-x py-20">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            eyebrow="Meet the team"
+            title="Lawyers who pick up the phone"
+            sub="29 lawyers across 11 partners, 10 senior associates and 8 associates — each one named, reachable and accountable."
+          />
+          <Link to="/lawyers" className="btn-navy !py-2.5">View all 29 lawyers <ArrowRight className="h-4 w-4" /></Link>
+        </div>
+        <div className="no-scrollbar mt-12 flex gap-5 overflow-x-auto pb-4 snap-x">
+          {featured.map(l => (
+            <div key={l.id} className="w-[300px] shrink-0 snap-start">
+              <LawyerCard lawyer={l} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ============ TESTIMONIALS ============ */}
+      <section className="relative overflow-hidden py-20">
+        <div className="absolute inset-0">
+          <img src={consultImg} alt="" className="h-full w-full object-cover opacity-[0.07]" />
+        </div>
+        <div className="container-x relative">
+          <SectionHeading
+            center
+            eyebrow="Client voices"
+            title="Real matters. Real people. Real outcomes."
+            sub="Names withheld for confidentiality; practice areas and acting lawyers shown with permission."
+          />
+          <div ref={quotesRef} className="mt-12 grid gap-6 md:grid-cols-3">
+            {TESTIMONIALS.map((t, i) => (
+              <figure data-reveal key={i} className="card-soft flex flex-col p-7">
+                <Quote className="h-7 w-7 text-gold-500" />
+                <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-navy-600">“{t.quote}”</blockquote>
+                <figcaption className="mt-5 border-t border-navy-100 pt-4">
+                  <p className="text-sm font-semibold text-navy-700">{t.name}</p>
+                  <p className="mt-0.5 text-xs text-teal-600">{t.matter}</p>
+                  <span className="mt-2 flex text-gold-500">{Array.from({ length: 5 }).map((_, j) => <Star key={j} className="h-3.5 w-3.5 fill-current" />)}</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ MEDIA STRIP ============ */}
+      <section className="border-y border-navy-700/5 bg-white py-10">
+        <div className="container-x">
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.24em] text-navy-400">As featured in</p>
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+            {MEDIA_OUTLETS.map(m => (
+              <span key={m} className="font-serif text-xl font-semibold text-navy-300 transition hover:text-navy-700">{m}</span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FAQ + CTA ============ */}
+      <FaqSection faqs={HOME_FAQS} sub="Quick answers, in plain language — reviewed by our lawyers." />
+      <CtaBanner />
+    </main>
+  )
+}
