@@ -38,8 +38,16 @@ npm run dev
 npm run build   # outputs to dist/
 ```
 
+## Files not tracked in this repo
+
+Two kinds of files from the original project folder are intentionally not committed here:
+
+1. **`src/assets/` images** (7 files: `hero.jpg`, `consult.jpg`, `skyline.jpg`, and 4 lawyer portraits) — AI-generated imagery. Add them back to `src/assets/` before building; the imports in `src/pages/Home.tsx`, `src/components/bits.tsx` and `src/data/lawyers.ts` expect exactly those filenames.
+2. **`src/components/ui/`** — stock [shadcn/ui](https://ui.shadcn.com) scaffold components. The app code does not import them; if you want them, regenerate with `npx shadcn@latest add <component>` (the repo's `components.json` is already configured).
+
+`package-lock.json` is also omitted — `npm install` regenerates it.
+
 ## Notes
 
 - Content uses only facts supplied in the design brief; fee figures are placeholders ("from S$—") pending the firm's published schedule.
 - No superlatives ("best", "cheapest") are used in copy, per Singapore Law Society publicity rules — affordability is proven through published fixed fees and free first consultations instead.
-- AI-generated imagery lives in `src/assets/` (hero, portraits, skyline, consultation room).
