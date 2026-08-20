@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I.R.B. Law LLP — Singapore Lawyers | Where Law Meets Heart</title>
+    <meta name="description" content="I.R.B. Law LLP is a Singapore law firm founded in 2012 with 50+ legal professionals. Family & divorce, Syariah law, criminal defence, wills & probate, conveyancing. Free first consultation. Fixed, published fees." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- ============================================================
+      INTENDED STRUCTURED DATA (schema.org) — to be emitted as JSON-LD
+      ============================================================
+
+      1) LegalService (site-wide):
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "I.R.B. Law LLP",
+        "url": "https://irblaw.com.sg/",
+        "telephone": "+65 6298 2537",
+        "email": "hello@irblaw.com.sg",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "60 Albert Street, #06-07 OG Albert Complex",
+          "addressLocality": "Singapore",
+          "postalCode": "189969",
+          "addressCountry": "SG"
+        },
+        "geo": { "@type": "GeoCoordinates", "latitude": "1.3018", "longitude": "103.8558" },
+        "openingHours": "Mo-Fr 09:30-18:00",
+        "sameAs": [
+          "https://www.facebook.com/irblaw",
+          "https://www.instagram.com/irblaw",
+          "https://www.linkedin.com/company/irb-law-llp"
+        ],
+        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "369" },
+        "foundingDate": "2012",
+        "areaServed": "Singapore",
+        "availableLanguage": ["English", "Malay", "Tamil", "Chinese"]
+      }
+
+      2) Person (one per lawyer, 29 total), e.g.:
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Mohamed Baiross",
+        "jobTitle": "Managing Partner",
+        "worksFor": { "@type": "LegalService", "name": "I.R.B. Law LLP" },
+        "alumniOf": "National University of Singapore",
+        "knowsLanguage": ["English", "Malay", "Tamil"],
+        "image": ".../lawyer-baiross.jpg",
+        "url": "https://irblaw.com.sg/lawyers/mohamed-baiross"
+      }
+
+      3) FAQPage (one per FAQ block on practice pages):
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "...", "acceptedAnswer": { "@type": "Answer", "text": "..." } }
+        ]
+      }
+
+      4) BreadcrumbList per page; Article schema per Learning Centre post
+         (author = Person lawyer, datePublished / dateModified).
+      ============================================================ -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
