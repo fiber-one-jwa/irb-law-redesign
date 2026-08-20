@@ -1,0 +1,68 @@
+
+      {/* Team module */}
+      <section className="bg-ivory-200/60 py-16">
+        <div className="container-x">
+          <SectionHeading
+            eyebrow="The team"
+            title="One of Singapore’s largest dedicated Syariah practices"
+            sub="Over 10 lawyers and paralegals serving the Muslim community — led by Partner Mohd Dzuleqhmal, with consultations available in Malay, Tamil, Chinese and English."
+          />
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {team.map(l => <LawyerCard key={l.id} lawyer={l} />)}
+          </div>
+        </div>
+      </section>
+
+      {/* Staged fees */}
+      <section className="container-x py-16">
+        <SectionHeading
+          eyebrow="Transparent fees"
+          title="Staged fixed fees — you only pay for the stage you reach"
+          sub="Most Syariah divorces settle at mediation. Our staged pricing means you never pre-pay for a hearing that never happens. Exact figures are confirmed in writing at your free first consultation."
+        />
+        <div className="mt-10">
+          <div className="card-soft overflow-hidden">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-navy-700 text-left text-white">
+                  <th className="px-5 py-3.5 font-semibold">Stage</th>
+                  <th className="px-5 py-3.5 font-semibold">Fixed fee</th>
+                  <th className="hidden px-5 py-3.5 font-semibold md:table-cell">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {STAGED_FEES.map((r, i) => (
+                  <tr key={i} className={i % 2 ? 'bg-ivory-100' : 'bg-white'}>
+                    <td className="px-5 py-3.5 font-medium text-navy-700">{r.service}</td>
+                    <td className="px-5 py-3.5 font-semibold text-gold-600">{r.price}</td>
+                    <td className="hidden px-5 py-3.5 text-navy-400 md:table-cell">{r.note}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 flex items-start gap-2 text-xs text-navy-400">
+            <Landmark className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-500" />
+            Fees are published for transparency, not as a claim of being the cheapest — Singapore Law Society publicity rules prohibit such claims, and frankly, your family deserves better than a price war.
+          </p>
+        </div>
+      </section>
+
+      {/* Language note */}
+      <section className="container-x pb-4">
+        <div className="card-soft flex flex-col items-start gap-4 bg-gradient-to-r from-teal-50 to-ivory-100 p-7 ring-teal-100 md:flex-row md:items-center">
+          <MessageCircle className="h-8 w-8 shrink-0 text-teal-600" />
+          <div>
+            <h2 className="font-serif text-lg font-bold text-navy-700">Selesa berbahasa Melayu? Begitu juga kami.</h2>
+            <p className="mt-1 text-sm text-navy-500">
+              Our Syariah team conducts full consultations in Malay — documents, counselling preparation and court appearances included. Tamil, Chinese and English are equally available.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <FaqSection faqs={SYARIAH_FAQS} title="Syariah law FAQ — 10 questions, answered plainly" sub="Reviewed by Partner Mohd Dzuleqhmal, Syariah Team Lead." />
+      <CtaBanner title="Bincang dengan kami — your first consultation is free." />
+    </main>
+  )
+}
