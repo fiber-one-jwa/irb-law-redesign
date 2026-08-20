@@ -1,0 +1,96 @@
+
+export interface Article {
+  id: string
+  title: string
+  area: string
+  summary: string
+  authorId: string
+  published: string
+  updated: string
+  readTime: string
+}
+
+export const ARTICLES: Article[] = [
+  {
+    id: 'syariah-divorce-guide',
+    title: 'Syariah Divorce in Singapore: the complete 2026 guide',
+    area: 'Syariah Law',
+    summary: 'A Syariah divorce in Singapore is filed at the Syariah Court under the Administration of Muslim Law Act. After mandatory counselling, most cases settle at mediation in four to six months; contested cases take a year or more. This guide covers talak, khuluk, fasakh, costs and what to bring to your first appointment.',
+    authorId: 'mohd-dzuleqhmal',
+    published: '12 Jan 2026',
+    updated: '18 Jun 2026',
+    readTime: '9 min',
+  },
+  {
+    id: 'arrested-what-to-do',
+    title: 'Arrested in Singapore? Your rights in the first 48 hours',
+    area: 'Criminal Defence',
+    summary: 'If you are arrested, you may remain silent beyond giving your particulars, you are not required to answer incriminating questions during investigation, and you may ask to contact a lawyer as soon as practicable. What you do in the first 48 hours often shapes the entire case.',
+    authorId: 'mohamed-baiross',
+    published: '3 Feb 2026',
+    updated: '2 Jul 2026',
+    readTime: '7 min',
+  },
+  {
+    id: 'asset-division',
+    title: 'How Singapore courts really divide matrimonial assets',
+    area: 'Family & Divorce',
+    summary: 'Courts divide matrimonial assets by weighing direct financial contributions against indirect contributions — caregiving, homemaking, supporting a spouse’s career. The Court of Appeal’s framework in UDA v UDB [2018] SGCA 20 still governs. Here is what that means for your HDB flat, CPF and savings.',
+    authorId: 'kulvinder-kaur',
+    published: '20 Mar 2026',
+    updated: '25 May 2026',
+    readTime: '8 min',
+  },
+  {
+    id: 'will-or-nothing',
+    title: 'Dying without a will in Singapore: what your family faces',
+    area: 'Wills & Probate',
+    summary: 'Without a will, the Intestate Succession Act distributes your estate by a rigid formula — unmarried partners and stepchildren receive nothing, and the court appoints an administrator you did not choose. A simple fixed-fee will avoids all of it.',
+    authorId: 'patricia-ng',
+    published: '8 Apr 2026',
+    updated: '30 Jun 2026',
+    readTime: '6 min',
+  },
+  {
+    id: 'faraid-explained',
+    title: 'Faraid explained: who inherits what in a Muslim estate',
+    area: 'Syariah Law',
+    summary: 'Faraid fixes inheritance shares for a Muslim’s heirs — spouse, children, parents and beyond — and is applied through a Syariah Court inheritance certificate. A wasiat can only cover one-third of the estate. This article walks through the shares with worked examples.',
+    authorId: 'siti-nurhaliza',
+    published: '15 May 2026',
+    updated: '10 Jul 2026',
+    readTime: '10 min',
+  },
+  {
+    id: 'hdb-conveyancing-timeline',
+    title: 'HDB resale timeline 2026: week by week, from OTP to keys',
+    area: 'Conveyancing & Property',
+    summary: 'An HDB resale typically takes eight to twelve weeks from exercising the Option to Purchase to completion. The critical dates are the resale application, HDB approval and completion appointment. Missing any of them can cost you your deposit — here is the week-by-week map.',
+    authorId: 'daniel-tan',
+    published: '2 Jun 2026',
+    updated: '15 Jul 2026',
+    readTime: '7 min',
+  },
+  {
+    id: 'wrongful-dismissal',
+    title: 'Wrongfully dismissed? What employees in Singapore can claim',
+    area: 'Employment',
+    summary: 'If you were dismissed without just cause, you may file a wrongful dismissal claim at TADM within one month of dismissal. Managers and executives get the same protection as other employees. Compensation is capped by statute — knowing the numbers changes your negotiation.',
+    authorId: 'cheryl-lim',
+    published: '21 Jun 2026',
+    updated: '18 Jul 2026',
+    readTime: '6 min',
+  },
+  {
+    id: 'accident-claim',
+    title: 'Injured in a road accident? The claims roadmap',
+    area: 'Personal Injury',
+    summary: 'Most road accident claims in Singapore settle without trial. The key steps are medical documentation, a claim against the at-fault driver’s insurer, and negotiation or court assessment of damages. Limitation is three years — but evidence is freshest in the first three months.',
+    authorId: 'abdul-razak',
+    published: '5 Jul 2026',
+    updated: '20 Jul 2026',
+    readTime: '8 min',
+  },
+]
+
+export const MEDIA_OUTLETS = ['The Straits Times', 'CNA', 'Business Times', 'TODAY']
