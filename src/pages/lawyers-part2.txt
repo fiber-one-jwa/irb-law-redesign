@@ -1,0 +1,104 @@
+
+export default function Lawyers() {
+  const [query, setQuery] = useState('')
+  const [area, setArea] = useState<string | null>(null)
+  const [lang, setLang] = useState<string | null>(null)
+  const [seniority, setSeniority] = useState<string | null>(null)
+
+  const filtered = useMemo(() => {
+    return LAWYERS.filter(l => {
+      if (query && !l.name.toLowerCase().includes(query.toLowerCase())) return false
+      if (area && !l.areas.includes(area)) return false
+      if (lang && !l.languages.includes(lang)) return false
+      if (seniority && l.seniority !== seniority) return false
+      return true
+    })
+  }, [query, area, lang, seniority])
+
+  const clear = () => { setQuery(''); setArea(null); setLang(null); setSeniority(null) }
+  const hasFilter = query || area || lang || seniority
+
+  const gridRef = useReveal<HTMLDivElement>(0.05)
+
+  const handlePick = useCallback((value: string) => {
+    if ((AREA_TITLES as readonly string[]).includes(value)) {
+      setArea(value)
+      setQuery('')
+    } else {
+      setQuery(value)
+      setArea(null)
+    }
+  }, [])
+
+  return (
+    <main>
+      <PageHero
+        eyebrow="Our People"
+        title="Meet the lawyers of I.R.B. Law LLP"
+        answer="Our team of 29 lawyers — 11 partners, 10 senior associates and 8 associates — covers family and Syariah law, criminal defence, wills, conveyancing and more, in English, Malay, Tamil and Chinese. Search by name or filter by practice area, language and seniority to find the right lawyer for you."
+        crumbs={[{ label: 'Our Lawyers' }]}
+      />
+
+      {/* Matching widget */}
+      <section className="container-x pt-14">
+        <MatchWidget />
+      </section>
+
+      {/* Directory */}
+      <section className="container-x py-14">
+        <SectionHeading
+          eyebrow="Directory"
+          title="All 29 lawyers"
+          sub="Every lawyer at IRB is listed here — no anonymous teams, no bait-and-switch. The person you choose is the person who handles your matter."
+        />
+
+        {/* Filters */}
+        <div className="card-soft sticky top-[76px] z-30 mt-10 p-4 md:p-5">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+            <ActionSearch onLawyerPick={handlePick} />
+            <div className="flex flex-wrap gap-2">
+              <select value={area ?? ''} onChange={e => setArea(e.target.value || null)} className="rounded-full border border-navy-200 bg-white px-4 py-2.5 text-xs font-medium text-navy-700 outline-none">
+                <option value="">All practice areas</option>
+                {AREA_TITLES.map(a => <option key={a} value={a}>{a}</option>)}
+              </select>
+              <select value={lang ?? ''} onChange={e => setLang(e.target.value || null)} className="rounded-full border border-navy-200 bg-white px-4 py-2.5 text-xs font-medium text-navy-700 outline-none">
+                <option value="">All languages</option>
+                {LANGUAGES.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+              <select value={seniority ?? ''} onChange={e => setSeniority(e.target.value || null)} className="rounded-full border border-navy-200 bg-white px-4 py-2.5 text-xs font-medium text-navy-700 outline-none">
+                <option value="">All seniority levels</option>
+                {SENIORITIES.map(s => <option key={s} value={s}>{s}</option>)}
+              </select>
+              {hasFilter && (
+                <button onClick={clear} className="flex items-center gap-1 rounded-full bg-navy-50 px-4 py-2.5 text-xs font-semibold text-navy-500 hover:bg-navy-100">
+                  <X className="h-3.5 w-3.5" /> Clear
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <p className="mt-6 flex items-center gap-2 text-sm text-navy-400">
+          <Users className="h-4 w-4 text-gold-500" /> Showing {filtered.length} of {LAWYERS.length} lawyers
+        </p>
+
+        <div ref={gridRef} className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map(l => (
+            <div key={l.id} id={l.id} data-reveal>
+              <LawyerCard lawyer={l} />
+            </div>
+          ))}
+        </div>
+        {filtered.length === 0 && (
+          <div className="card-soft mt-6 p-10 text-center">
+            <p className="font-serif text-lg font-bold text-navy-700">No lawyers match those filters</p>
+            <p className="mt-2 text-sm text-navy-400">Try widening your search, or WhatsApp us and we’ll point you to the right person.</p>
+            <a href={CONTACT.whatsappHref} className="btn-gold mt-5">Ask us directly <ArrowRight className="h-4 w-4" /></a>
+          </div>
+        )}
+      </section>
+
+      <CtaBanner title="The right lawyer changes everything. Let’s find yours." />
+    </main>
+  )
+}
